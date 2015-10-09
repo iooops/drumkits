@@ -140,12 +140,12 @@ function sketchProc(processing) {
     } else if(circleOver2[1]) {
       ddm[1] = ddm[1] + 5;
       ppx[1] = ppx[1] + 2;
-      Sample.play(BUFFERS.ride, 0);
+      Sample.play(BUFFERS.crash, 0);
       setTimeout(function() { ddm[1] = ddm[1] -5; ppx[1] = ppx[1] -2;} ,100);
     } else if(circleOver2[2]) {
       ddm[2] = ddm[2] + 5;
       ppx[2] = ppx[2] - 3;
-      Sample.play(BUFFERS.crash, 0);
+      Sample.play(BUFFERS.ride, 0);
       setTimeout(function() { ddm[2] = ddm[2] -5; ppx[2] = ppx[2] +3; } ,100);
     }
   };
@@ -215,13 +215,13 @@ var keydown = function (event) {
   if (event.keyCode == 69) {
     ddm[1] = ddm[1] + 5;
     ppx[1] = ppx[1] + 2;
-    Sample.play(BUFFERS.ride, 0);
+    Sample.play(BUFFERS.crash, 0);
     setTimeout(function() { ddm[1] = ddm[1] -5; ppx[1] = ppx[1] -2;} ,100);
   }      
   if (event.keyCode == 73) {
     ddm[2] = ddm[2] + 5;
     ppx[2] = ppx[2] - 3;
-    Sample.play(BUFFERS.crash, 0);
+    Sample.play(BUFFERS.ride, 0);
     setTimeout(function() { ddm[2] = ddm[2] -5; ppx[2] = ppx[2] +3; } ,100);
   }      
   if (event.keyCode == 88) {
