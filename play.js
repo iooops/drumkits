@@ -3,8 +3,6 @@ var Sample = {
 };
 
 Sample.gainNode = null;
-Sample.convolver = null;
-Sample.revlevel = null;
 
 Sample.play = function(buffer, time) {
   if (!context.createGain)
@@ -12,15 +10,9 @@ Sample.play = function(buffer, time) {
   this.gainNode = context.createGain();
   var fra = document.getElementById("volume").value / 100;
   this.gainNode.gain.value = fra * fra;
-  tempconvolver = context.createConvolver();
-  this.revlevel = context.createGain();
-  this.revlevel.gain.value = document.getElementById("rev").value / 100;
-  tempconvolver.connect(this.revlevel);
-  this.revlevel.connect(context.destination);
   
   var source = context.createBufferSource();
   source.buffer = buffer;
-  tempconvolver.buffer = BUFFERS.rev1;
   source.connect(this.gainNode);
  // this.gainNode.connect(tempconvolver);
   this.gainNode.connect(context.destination);
@@ -35,10 +27,6 @@ Sample.changeVolume = function(element) {
   this.gainNode.gain.value = fraction * fraction;
 };
 
-Sample.changeRev = function(element) {
-  var reverb = element.value;
-  this.revlevel.gain.value = parseInt(reverb) / 100;
-};
 
 Sample.stop = function() {
   var ctx = this;

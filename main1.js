@@ -32,7 +32,7 @@ function sketchProc(processing) {
   };
 
   processing.draw = function() {
-    if(loaded>=12){
+    if(loaded>=11){
     update(processing.mouseX, processing.mouseY);
     processing.background(currentColor);
     for(var i=0; i<5; i++) {
@@ -77,7 +77,7 @@ function sketchProc(processing) {
     progressBar=50;
     }
     processing.rect(50,100,5*progressBar,50);
-    progressBar=progressBar+1
+    progressBar=progressBar+1;
   }
   };
 

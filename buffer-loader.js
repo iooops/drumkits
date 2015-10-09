@@ -41,7 +41,6 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
   };
 
   request.send();
-  alert("sent");
 };
 
 BufferLoader.prototype.load = function() {
