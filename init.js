@@ -4,20 +4,20 @@ var BUFFERS = {};
 // Page-wide audio context.
 var context = null;
 
-var loaded = 0;
+var loaded=0;
 
 // An object to track the buffers to load {name: path}
 var BUFFERS_TO_LOAD = {
-  kick: 'audio/kick.wav',
-  snare: 'audio/snare.wav',
-  tom1: 'audio/hmtom.wav',
-  tom2: 'audio/ltom.wav',
-  tom3: 'audio/lftom.wav',
-  hihatclose: 'audio/hihatclosed.wav',
-  hihatopen: 'audio/hihatopen.wav',
-  crash: 'audio/crash.wav',
-  ride: 'audio/ride.wav',
-  sample: 'audio/sample.wav',
+  kick: 'audio/HH_JKick23.wav',
+  snare: 'audio/HH_Snare61.wav',
+  tom1: 'audio/HH_JTom1.wav',
+  tom2: 'audio/HH_JTom2.wav',
+  tom3: 'audio/HH_JTom4.wav',
+  hihatclose: 'audio/HH_Hat1.wav',
+  hihatopen: 'audio/HH_Hat2.wav',
+  crash: 'audio/HH_Crash4.wav',
+  ride: 'audio/HH_JPRide1.wav',
+  beat: 'audio/beat.wav',
   rev1:  'audio/s1_r1_bd.wav'
 };
 
@@ -36,12 +36,11 @@ function loadBuffers() {
       var buffer = bufferList[i];
       var name = names[i];
       BUFFERS[name] = buffer;
-      loaded=loaded+1;
     }
   });
   bufferLoader.load();
-  loaded = loaded + 1;
-  bufferLoaded = true;
+        loaded=loaded+1;
+        bufferLoaded=true;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -55,5 +54,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   loadBuffers();
 });
-
 
