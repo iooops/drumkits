@@ -33,16 +33,20 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
     );
   };
 
+  request.onsuccess=function(){
+  };
+
   request.onerror = function() {
     alert('BufferLoader: XHR error');
   };
 
   request.send();
+  alert("sent");
 };
 
 BufferLoader.prototype.load = function() {
   for (var i = 0; i < this.urlList.length; ++i) {
     this.loadBuffer(this.urlList[i], i);
   }
-};
 
+};
