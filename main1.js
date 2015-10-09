@@ -14,6 +14,7 @@ var ppy = new Array(150, 75, 120);
 var ddm = new Array(100, 120, 140);
 var a,b;
 var bufferLoaded = false;
+var progressBar=0;
 
 // Simple way to attach js code to the canvas is by using a function
 function sketchProc(processing) {
@@ -31,7 +32,7 @@ function sketchProc(processing) {
   };
 
   processing.draw = function() {
-    if(bufferLoaded){
+    if(loaded>=12){
     update(processing.mouseX, processing.mouseY);
     processing.background(currentColor);
     for(var i=0; i<5; i++) {
@@ -71,8 +72,12 @@ function sketchProc(processing) {
     processing.rect(30, 210, 20, 30, 3, 3, 12, 12);
   } else{
     processing.background(0);
-    processing.text("Im still loading noob"+loaded,50,50);
-    processing.rect(50,100,50*loaded,50);
+    processing.text("Loading Samples...Please wait"+loaded,50,50);
+    if(progressBar>340){
+    progressBar=50;
+    }
+    processing.rect(50,100,5*progressBar,50);
+    progressBar=progressBar+1
   }
   };
 
