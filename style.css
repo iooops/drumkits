@@ -1,6 +1,8 @@
 
 	body {
 	  background-color: #333; color: #bbb; line-height: normal;
+	  background-image:url(image/fire.jpg);
+	  background-size:100% 100%;
 	  font-family: Lucida Grande, Lucida Sans, Arial, Helvetica Neue, Verdana, Geneva, sans-serif;
 	  font-size: 11px; font-weight: normal; text-decoration: none;
 		  line-height: 1.5em;
@@ -20,6 +22,7 @@
 		display: block; 
 		outline: 0px; 
 		margin-bottom: 1.5em; 
+		box-shadow:-4px -4px 3px #500000;
 	}
 	#content { 
 		margin: 50px auto 0px auto; padding: 25px 25px 15px 25px;

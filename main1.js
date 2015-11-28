@@ -20,13 +20,13 @@ var progressBar=0;
 function sketchProc(processing) {
   processing.setup = function() {
     processing.size(640, 360);
-    circleColor = processing.color(0);
+    circleColor = processing.color(processing.RGB, 255, 0, 0);
     circleHighlight = processing.color(51);
     circleColor2 = processing.color(255);
     circleHighlight2 = processing.color(200);
     rectColor = processing.color(20);
     rectHighlight = processing.color(51);
-    currentColor = processing.color(30);
+    currentColor = processing.color(0);
     a = processing.color(20);
     b = processing.color(150);
   };
@@ -182,7 +182,7 @@ var p = new Processing(canvas, sketchProc);
 
 
 var keydown = function (event) {
-  if (event.keyCode == 66) { 
+  if (event.keyCode == 32) { 
     dm[0] = dm[0] + 5;
     Sample.play(BUFFERS.kick, 0);
     setTimeout(function() { dm[0] = dm[0] -5; } ,100);

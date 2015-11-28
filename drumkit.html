@@ -5,19 +5,20 @@
   <script src="buffer-loader.js"></script>
   <script src="init.js"></script>
   <script src="play.js"></script>
+  <script src="show.js"></script>
   
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
-<body><h1>DRUM KIT</a></h1>
-<h2>Please wait a few seconds, then hit it.</h2>
-<p>
+<body align="center">
+  <h1>DRUM KIT</a></h1>
+  <h2>Please wait a few seconds, then hit it.</h2>
+<p align="center">
   You can use your mouse or keyboard to play this drum.</br>
-  KEY:B - KICK, D - SNARE, H - TOM1(left), J - TOM2(middle), K - TOM3(right),
+  KEY:SPACE - KICK, D - SNARE, H - TOM1(left), J - TOM2(middle), K - TOM3(right),
   W - HI-HAT, E - CRASH CYMBOL, I - RIDE CYMBOL, X - HIHAT switchover(CLOASED/OPEN).</br>
-  Remember: Be Gentle and Do Not hit it many times in a short time, or it will hurt.</br>
   The following is a sample made by this drumkit:
-  <input type="button" id="play" onclick="Sample.toggle(BUFFERS.sample,0);" value="Play/Pause">
-</br>
+  <input type="button" id="play" onclick="Sample.toggle(BUFFERS.sample,0);" value="Play/Stop">
+  </br>
 </p>
 
 
@@ -25,7 +26,7 @@
   <canvas id="canvas1" width="640" height="360"></canvas>
 </div>
 <div id="divRight">
-  <canvas id="graph" width="512" height="360"></canvas>
+  <canvas id="graph" width="512" height="360"   onclick="Sample.analyserType();"></canvas>
 </div>
 
 <script src="main1.js"></script>
@@ -33,6 +34,9 @@
 Volume:
 <input type="range" id="volume" min="0" max="100" value="100" oninput="Sample.changeVolume(this);">
 </br>
+<!--Revlevel:-->
+<!--<input type="range" id="revlevel" min="0" max="100" value="100" oninput="Sample.changeRevlev(this);">-->
+<!--</br>-->
 
 </body>
 </html>

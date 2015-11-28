@@ -1,9 +1,7 @@
-
 var Sample = {
   FADE_TIME: 0.5
 };
 
-var mode = 0;
 Sample.gainNode = null;
 
 Sample.play = function(buffer, time) {
@@ -23,32 +21,36 @@ Sample.play = function(buffer, time) {
     ctx.fillRect(0, 0, 512, 360);
     ctx.strokeStyle="rgba(255, 0, 0, 2)";
     var data = new Uint8Array(512);
-    if(mode == 0) analyser.getByteFrequencyData(data); //Spectrum Data
-    else analyser.getByteTimeDomainData(data); //Waveform Data
-    if(mode!=0) ctx.beginPath();
+    analyser.getByteTimeDomainData(data); //Waveform Data
+    ctx.beginPath();
     for(var i = 0; i < 256; ++i) {
-        if(mode==0) {
-            ctx.fillStyle = "#B00000";
-            ctx.fillRect(i*2, 360 - data[i], 2, data[i]);
-        } else {
-            ctx.lineWidth = 4;
-            ctx.lineTo(i*2, 300 - data[i]);
-        }
+        ctx.lineTo(i*2, 256 - data[i]);
     }
-    if(mode!=0) {
-        ctx.stroke();
-    }
+    ctx.stroke();
     requestAnimationFrame(DrawGraph);
   }
   timerId=requestAnimationFrame(DrawGraph);
   
+  var convolver = context.createConvolver();
+  this.revlevel = context.createGain();
+  var lev = document.getElementById("revlevel").value / 100;
+  this.revlevel.gain.value = lev;
+  convolver.connect(this.revlevel);
+  this.revlevel.connect(context.destination);
+  this.revlevel.connect(analyser);
+  convolver.buffer = BUFFERS.rev1;
+  
   var source = context.createBufferSource();
   source.buffer = buffer;
   source.connect(this.gainNode);
- // this.gainNode.connect(tempconvolver);
   this.gainNode.connect(context.destination);
+  this.gainNode.connect(convolver);
   this.gainNode.connect(analyser);
   source.start(time);
+};
+
+Sample.changeRevlev = function(element) {
+  var lev = element.value;
 };
 
 Sample.changeVolume = function(element) {
@@ -59,13 +61,6 @@ Sample.changeVolume = function(element) {
   this.gainNode.gain.value = fraction * fraction;
 };
 
-Sample.analyserType = function() {
-  if(mode==0) {
-    mode=1;
-  } else {
-    mode=0;
-  }
-};
 
 Sample.stop = function() {
   var ctx = this;
